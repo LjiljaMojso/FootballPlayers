@@ -1,4 +1,4 @@
-var teamData = {
+const teamData = {
     teamName: "FC Barcelona",
     teamLogo: "img/barsa-logo.png",
     players:[
@@ -139,12 +139,12 @@ var teamData = {
         }
     ]
 }
-var playersArray = teamData.players;
+let playersArray = teamData.players;
 console.log(playersArray);
 
-function randomPickPlayer(array) {
-    var i = array.length;
-    var j = array.length;
+const randomPickPlayer = array => {
+    let i = array.length;
+    let j = array.length;
     while (i !== 0) {
     
       j = Math.floor(Math.random() * i);
@@ -160,95 +160,95 @@ function randomPickPlayer(array) {
   
 randomPickPlayer(playersArray);
 
-var logo = document.createElement("img");
+let logo = document.createElement("img");
 logo.setAttribute("src", teamData.teamLogo);
-var header = document.querySelector("header");
+let header = document.querySelector("header");
 header.appendChild(logo);
 
-var main = document.createElement("div");
+let main = document.createElement("div");
 main.setAttribute("id", "main");
-var body = document.querySelector("body");
+let body = document.querySelector("body");
 body.appendChild(main);
 
 
-var title = document.createElement("h1");
+let title = document.createElement("h1");
 title.innerHTML = teamData.teamName;
 header.after(title);
 
-var players = document.createElement("div");
+let players = document.createElement("div");
 players.setAttribute("id", "players");
 main.appendChild(players);
 
 
-var subs = document.createElement("div");
+let subs = document.createElement("div");
 subs.setAttribute("id", "subs");
 main.appendChild(subs);
 
 
-var subsTitle = document.createElement("h2");
+let subsTitle = document.createElement("h2");
 subsTitle.innerHTML = "Substitutes";
 players.after(subsTitle);
 
-var firstEleven = 11;
-var substitutions = 4;
 
-function addPlayers() {
-    for (var i = 0; i < firstEleven + substitutions; i++) {
+
+const addPlayers = () => {
+    let firstEleven = 11;
+    let substitutions = 4;
+    for (let i = 0; i < firstEleven + substitutions; i++) {
       if (i < firstEleven) {
-      var parentDiv = players;
+       parentDiv = players;
       } else {
-      var parentDiv = subs;
+      parentDiv = subs;
+      
     }
 
-    var player = document.createElement("div");
-    player.classList.add("player");
-    parentDiv.appendChild(player);
+    let player = document.createElement("div");
+      player.classList.add("player");
+      parentDiv.appendChild(player);
 
   
-    var playerImage = document.createElement("img");
+    let playerImage = document.createElement("img");
     playerImage.setAttribute("src", teamData.players[i].photo);
     player.appendChild(playerImage);
 
 
-    var playerName = document.createElement("h4");
+    let playerName = document.createElement("h4");
     playerName.innerHTML = teamData.players[i].name;
     player.appendChild(playerName);
 
-    var playerLastName = document.createElement("h3");
+    let playerLastName = document.createElement("h3");
     playerLastName.innerHTML = teamData.players[i].lastName;
     player.appendChild(playerLastName);
 
-    var playerPosition = document.createElement("h4");
+    let playerPosition = document.createElement("h4");
     playerPosition.innerHTML = teamData.players[i].position;
     player.appendChild(playerPosition);
 
-    var playerCountry = document.createElement("h5");
+    let playerCountry = document.createElement("h5");
     playerCountry.innerHTML = teamData.players[i].country;
     player.appendChild(playerCountry);
 
-    var playerNumber = document.createElement("p");
+    let playerNumber = document.createElement("p");
     playerNumber.innerHTML = teamData.players[i].number;
     player.appendChild(playerNumber);
     }
 }
 
-function getRandomPlayer(arr) {
-  return Math.floor(Math.random() * playersArray.length);
-}
+const getRandomPlayer = () => Math.floor(Math.random() * playersArray.length)
 
-function makeChange() {
+const makeChange = () => {
     
-  var firstTeam = document.querySelectorAll("#players .player");
-  var secondTeam = document.querySelectorAll("#subs .player");
+  let firstTeam = document.querySelectorAll("#players .player");
+  let secondTeam = document.querySelectorAll("#subs .player");
 
-  var firstTeamNumber = getRandomPlayer(firstTeam);
-  var secondTeamNumber = getRandomPlayer(secondTeam);
+  let firstTeamNumber = getRandomPlayer(firstTeam);
+  let secondTeamNumber = getRandomPlayer(secondTeam);
 
-  var firstTeamPlayer = firstTeam[firstTeamNumber];
-  var secondTeamPlayer = secondTeam[secondTeamNumber];
+  let firstTeamPlayer = firstTeam[firstTeamNumber];
+  let secondTeamPlayer = secondTeam[secondTeamNumber];
 
-  var subPrevious = secondTeamPlayer.previousSibling;
-  var subNext = secondTeamPlayer.nextSibling;
+  let subPrevious = secondTeamPlayer.previousSibling;
+  let subNext = secondTeamPlayer.nextSibling;
 
   firstTeamPlayer.after(secondTeamPlayer);
 
@@ -258,7 +258,7 @@ function makeChange() {
 }
 
 addPlayers();
-setInterval(makeChange, 10000);
+setInterval(makeChange, 5000);
 
 
 
